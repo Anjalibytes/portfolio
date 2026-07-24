@@ -19,7 +19,7 @@ This site is the same idea, just in HTML: one entry at a time.
 ## Status
 
 🟢 HTML structure — complete
-🟡 CSS styling — in progress
+🟡 CSS styling — complete
 ⚪ JavaScript — not started
 
 ## Daily workflow
@@ -33,5 +33,5 @@ git push
 ## Built with
 
 - HTML
-- CSS (in progress)
+- CSS (complete little detail left)
 - Learning at [freeCodeCamp](https://www.freecodecamp.org/)
