@@ -305,3 +305,30 @@ footer {
     scroll-behavior: auto;
   }
 }
+/* ==========================================================================
+   13. DARK MODE (toggled by JS)
+   ========================================================================== */
+
+body.dark-mode {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+body.dark-mode .card,
+body.dark-mode #entries article,
+body.dark-mode #reading {
+  background: #3A3733;
+}
+
+body.dark-mode a {
+  color: #E0A98C;
+}
+
+/* ==========================================================================
+   14. ACTIVE NAV LINK (set by JS on scroll)
+   ========================================================================== */
+
+nav a.active-link {
+  color: var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+}
