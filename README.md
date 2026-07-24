@@ -14,13 +14,13 @@ This site is the same idea, just in HTML: one entry at a time.
 - **Entries** — things I've built, what I learned from each
 - **Notes** — a running build log, day by day
 - **Contact** — email, GitHub, LinkedIn
-- **Footer** — a quote that stuck with me that day
+- **Footer** — a quote that stuck with me that day, with a button to see another
 
 ## Status
 
 🟢 HTML structure — complete
-🟡 CSS styling — complete
-⚪ JavaScript — not started
+🟢 CSS styling — complete
+🟡 JavaScript — in progress (dark mode toggle, quote rotator, scroll nav highlight, day counter added)
 
 ## Daily workflow
 
@@ -33,5 +33,6 @@ git push
 ## Built with
 
 - HTML
-- CSS (complete little detail left)
+- CSS
+- JavaScript
 - Learning at [freeCodeCamp](https://www.freecodecamp.org/)
