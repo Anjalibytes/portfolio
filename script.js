@@ -6,39 +6,7 @@
 
 
 /* ==========================================================================
-   1. DARK / LIGHT MODE TOGGLE
-   Needs a button somewhere in your HTML, e.g. in the header:
-     <button id="theme-toggle">🌙</button>
-   ========================================================================== */
-
-// document.getElementById() grabs an element by its id, just like
-// querySelector('#id') would — this is the classic way to do it.
-const themeToggle = document.getElementById('theme-toggle');
-
-// Check localStorage for a saved preference from last time you visited.
-// localStorage keeps data in the browser even after the page is closed.
-const savedTheme = localStorage.getItem('theme');
-
-if (savedTheme === 'dark') {
-  document.body.classList.add('dark-mode');
-}
-
-// Only run this if the button actually exists on the page —
-// prevents errors if you haven't added the button yet.
-if (themeToggle) {
-  themeToggle.addEventListener('click', function () {
-    // classList.toggle adds the class if it's missing, removes it if present.
-    document.body.classList.toggle('dark-mode');
-
-    // Save the current state so it persists on next visit.
-    const isDark = document.body.classList.contains('dark-mode');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-
-    // Swap the button icon/text depending on mode.
-    themeToggle.textContent = isDark ? '☀️' : '🌙';
-  });
-}
-
+  
 
 /* ==========================================================================
    2. QUOTE ROTATOR
@@ -52,7 +20,18 @@ if (themeToggle) {
 
 // An array of objects — each object holds one quote's full info.
 // Add as many as you like; the code below doesn't need to change.
-const quotes = [
+
+ const quotes = [
+  {
+    text: "I am not afraid of storms, for I am learning how to sail my ship.",
+    author: "Louisa May Alcott",
+    note: "i am afraid of not able to sail through!"
+  },
+  {
+    text: "Not everything I build needs to stay. Some days, the best progress is what I remove.",
+    author: "Anjali",
+    note: "felt true today — cut dark mode and notes, kept it simple"
+  },
   {
     text: "I am free and that is why I am lost.",
     author: "Franz Kafka",
@@ -74,6 +53,7 @@ const quotes = [
     note: "felt weirdly comforting today"
   }
 ];
+
 
 const quoteTextEl = document.getElementById('quote-text');
 const quoteAuthorEl = document.getElementById('quote-author');
@@ -152,3 +132,27 @@ if (dayCounterEl) {
 
   dayCounterEl.textContent = `Day ${daysSoFar} of this journal.`;
 }
+/* ==========================================================================
+   5. SCROLL REVEAL
+   Sections fade/slide in as you scroll to them, using IntersectionObserver —
+   a "watcher" that tells us when an element enters the visible screen.
+   ========================================================================== */
+
+const revealTargets = document.querySelectorAll('main section, footer #quote');
+
+const revealObserver = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      // Stop watching once revealed — no need to keep checking.
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.15 // fires when 15% of the section is visible
+});
+
+revealTargets.forEach(function (target) {
+  target.classList.add('reveal');
+  revealObserver.observe(target);
+});
